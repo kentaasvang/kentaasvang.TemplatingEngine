@@ -9,11 +9,11 @@ public class TemplatingEngineTests
     public void HappyPathTest()
     {
         TemplatingEngine templatingEngine = new();
-        var template = "abcdefghi[name]jklmnopqrstuvwxyzæøå";
+        const string template = "abcdefghi[key]jklmnopqrstuvwxyzæøå";
         templatingEngine.LoadTemplate(template);
 
-        var actual = templatingEngine.Replace(new Dictionary<string, string>{{"name", "kent"}});
-        var expected = "abcdefghikentjklmnopqrstuvwxyzæøå";
+        var actual = templatingEngine.Replace(new Dictionary<string, string>{{"key", "value"}});
+        const string expected = "abcdefghivaluejklmnopqrstuvwxyzæøå";
             
         Assert.Equal(templatingEngine.Template, template);
         Assert.Equal(expected, actual);

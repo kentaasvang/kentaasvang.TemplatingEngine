@@ -36,18 +36,15 @@ public class TemplatingEngine
                 inKeyword = false;
                 continue;
             }
-            
+
             if (character is not '[' or ']')
             {
                 stringBuilder.Append(character);
                 continue;
             }
 
-            if (character is '[')
-            {
+            if (character == '[')
                 inKeyword = true;
-                continue;
-            }
         }
 
         return stringBuilder.ToString();
