@@ -3,6 +3,7 @@ using BenchmarkDotNet.Running;
 
 namespace kentaasvang.TemplatingEngine.Benchmark;
 
+[MemoryDiagnoser]
 public class Benchmarks
 {
     [Benchmark]
