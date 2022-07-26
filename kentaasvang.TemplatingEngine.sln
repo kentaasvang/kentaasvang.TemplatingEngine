@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{A5264576
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.TemplatingEngine.Benchmark", "tests\kentaasvang.TemplatingEngine.Benchmark\kentaasvang.TemplatingEngine.Benchmark.csproj", "{3F265256-728A-4283-88D2-86BC7F8EA34B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +29,14 @@ Global
 		{71FD60A5-49C8-445B-A68A-95867FB02657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71FD60A5-49C8-445B-A68A-95867FB02657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71FD60A5-49C8-445B-A68A-95867FB02657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F265256-728A-4283-88D2-86BC7F8EA34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F265256-728A-4283-88D2-86BC7F8EA34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F265256-728A-4283-88D2-86BC7F8EA34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F265256-728A-4283-88D2-86BC7F8EA34B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE0940F6-0E22-4370-839F-E2EA28736881} = {A84C6D63-0E99-4C4B-BD45-678D5D8BAA3E}
 		{71FD60A5-49C8-445B-A68A-95867FB02657} = {A7B2F625-5332-4C0D-9BBB-3A38F19EA947}
+		{3F265256-728A-4283-88D2-86BC7F8EA34B} = {A7B2F625-5332-4C0D-9BBB-3A38F19EA947}
 	EndGlobalSection
 EndGlobal
