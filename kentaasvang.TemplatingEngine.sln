@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A84C6D63-0E99-4C4B-BD45-678D5D8BAA3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A7B2F625-5332-4C0D-9BBB-3A38F19EA947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.TemplatingEngine", "src\kentaasvang.TemplatingEngine\kentaasvang.TemplatingEngine.csproj", "{FE0940F6-0E22-4370-839F-E2EA28736881}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.TemplatingEngine.UnitTests", "tests\kentaasvang.TemplatingEngine.UnitTests\kentaasvang.TemplatingEngine.UnitTests.csproj", "{71FD60A5-49C8-445B-A68A-95867FB02657}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE0940F6-0E22-4370-839F-E2EA28736881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0940F6-0E22-4370-839F-E2EA28736881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0940F6-0E22-4370-839F-E2EA28736881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0940F6-0E22-4370-839F-E2EA28736881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FD60A5-49C8-445B-A68A-95867FB02657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FD60A5-49C8-445B-A68A-95867FB02657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FD60A5-49C8-445B-A68A-95867FB02657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FD60A5-49C8-445B-A68A-95867FB02657}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE0940F6-0E22-4370-839F-E2EA28736881} = {A84C6D63-0E99-4C4B-BD45-678D5D8BAA3E}
+		{71FD60A5-49C8-445B-A68A-95867FB02657} = {A7B2F625-5332-4C0D-9BBB-3A38F19EA947}
+	EndGlobalSection
+EndGlobal
