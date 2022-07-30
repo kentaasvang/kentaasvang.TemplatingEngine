@@ -4,14 +4,29 @@ namespace kentaasvang.TemplatingEngine;
 
 public static class TemplatingEngine
 {
-    public static string Replace(string template, Dictionary<string, string> keyvals)
+    public static string Replace(string template, Dictionary<string, string> keyValues, bool useEscape = false)
     {
         var           inKeyword        = false;
         StringBuilder temporaryKeyword = new();
         StringBuilder stringBuilder    = new();
+        const char    escape           = '\\';
+        bool          inEscape         = false;
 
         foreach (var character in template)
         {
+            if (inEscape)
+            {
+                inEscape = false;
+                stringBuilder.Append(character);
+                continue;
+            }
+            
+            if (character is escape && useEscape)
+            {
+                inEscape = true;
+                continue;
+            }
+            
             if (inKeyword)
             {
                 if (character is not ']')
@@ -20,7 +35,7 @@ public static class TemplatingEngine
                     continue;
                 }
 
-                if (!keyvals.TryGetValue(temporaryKeyword.ToString(), out var value))
+                if (!keyValues.TryGetValue(temporaryKeyword.ToString(), out var value))
                     stringBuilder.Append(temporaryKeyword);
                 else
                     stringBuilder.Append(value);
@@ -42,7 +57,7 @@ public static class TemplatingEngine
 
         return stringBuilder.ToString();
     }
-    
+
     // public static string ReplaceOp(
     //     ReadOnlySpan<char>         template,
     //     Dictionary<string, string> keywordDict,
