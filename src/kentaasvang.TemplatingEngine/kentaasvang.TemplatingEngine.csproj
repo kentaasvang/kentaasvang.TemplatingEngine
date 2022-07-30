@@ -4,14 +4,14 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>1.0.0</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <Title>TemplatingEngine</Title>
         <Description>Toy implementation of a text text templating engine</Description>
         <PackageProjectUrl>https://github.com/kentaasvang/kentaasvang.TemplatingEngine</PackageProjectUrl>
         <RepositoryUrl>https://github.com/kentaasvang/kentaasvang.TemplatingEngine</RepositoryUrl>
         <RepositoryType>Github</RepositoryType>
         <PackageTags>templating engine text naive small</PackageTags>
-        <PackageReleaseNotes>first implementation</PackageReleaseNotes>
+        <PackageReleaseNotes> Simple escapeChar-handling implemented</PackageReleaseNotes>
     </PropertyGroup>
 
 </Project>
