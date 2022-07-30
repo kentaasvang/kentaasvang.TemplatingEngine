@@ -12,6 +12,12 @@
         <RepositoryType>Github</RepositoryType>
         <PackageTags>templating engine text naive small</PackageTags>
         <PackageReleaseNotes> Simple escapeChar-handling implemented</PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLisenceFile>LICENSE</PackageLisenceFile>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="LICENSE" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    
 </Project>
