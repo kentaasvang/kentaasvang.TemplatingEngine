@@ -8,14 +8,20 @@ public class TemplatingEngineTests
     [Fact]
     public void HappyPathTest()
     {
-        TemplatingEngine templatingEngine = new();
-        const string template = "abcdefghi[key]jklmnopqrstuvwxyzæøå";
-        templatingEngine.LoadTemplate(template);
-
-        var actual = templatingEngine.Replace(new Dictionary<string, string>{{"key", "value"}});
-        const string expected = "abcdefghivaluejklmnopqrstuvwxyzæøå";
+        const string template = @"ab\[key]cdefghi[key]jklmnopqrs[key]tuvwxyzæøå";
+        var actual = TemplatingEngine.Replace(template, new Dictionary<string, string>{{"key", "value"}});
+        const string expected = @"ab\valuecdefghivaluejklmnopqrsvaluetuvwxyzæøå";
             
-        Assert.Equal(templatingEngine.Template, template);
+        Assert.Equal(expected, actual);
+    }
+    
+    [Fact]
+    public void HappyPath_WithEscapeCharacter()
+    {
+        const string template = @"abcdefghi\[key]jkl[key]mnopqrst\[key]uvwxyzæøå";
+        var actual = TemplatingEngine.Replace(template, new Dictionary<string, string>{{"key", "value"}}, true);
+        const string expected = @"abcdefghi[key]jklvaluemnopqrst[key]uvwxyzæøå";
+            
         Assert.Equal(expected, actual);
     }
 }

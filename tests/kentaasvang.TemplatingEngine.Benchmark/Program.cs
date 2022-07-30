@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using System.Collections.ObjectModel;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
 namespace kentaasvang.TemplatingEngine.Benchmark;
@@ -9,13 +10,10 @@ public class Benchmarks
     [Benchmark]
     public void Replace()
     {
-        TemplatingEngine templateEngine = new();
         var template = "Should be a long ass text [key] with a lot of values";
-        templateEngine.LoadTemplate(template);
         Dictionary<string, string> keyVals = new() {{"key", "value"}};
-        var result = templateEngine.Replace(keyVals);
+        var result = TemplatingEngine.Replace(template, keyVals);
     }
-
 
     static void Main() => BenchmarkRunner.Run<Benchmarks>();
 }

@@ -2,23 +2,31 @@
 
 namespace kentaasvang.TemplatingEngine;
 
-public class TemplatingEngine
+public static class TemplatingEngine
 {
-    public string Template { get; private set; } = null!;
-    
-    public void LoadTemplate(string template)
+    public static string Replace(string template, Dictionary<string, string> keyValues, bool useEscape = false)
     {
-        Template = template;
-    }
-
-    public string Replace(Dictionary<string, string> keywordDict)
-    {
-        var inKeyword = false;
+        var           inKeyword        = false;
         StringBuilder temporaryKeyword = new();
-        StringBuilder stringBuilder = new();
+        StringBuilder stringBuilder    = new();
+        const char    escape           = '\\';
+        bool          inEscape         = false;
 
-        foreach (var character in Template)
+        foreach (var character in template)
         {
+            if (inEscape)
+            {
+                inEscape = false;
+                stringBuilder.Append(character);
+                continue;
+            }
+            
+            if (character is escape && useEscape)
+            {
+                inEscape = true;
+                continue;
+            }
+            
             if (inKeyword)
             {
                 if (character is not ']')
@@ -27,7 +35,7 @@ public class TemplatingEngine
                     continue;
                 }
 
-                if (!keywordDict.TryGetValue(temporaryKeyword.ToString(), out var value))
+                if (!keyValues.TryGetValue(temporaryKeyword.ToString(), out var value))
                     stringBuilder.Append(temporaryKeyword);
                 else
                     stringBuilder.Append(value);
@@ -49,4 +57,83 @@ public class TemplatingEngine
 
         return stringBuilder.ToString();
     }
+
+    // public static string ReplaceOp(
+    //     ReadOnlySpan<char>         template,
+    //     Dictionary<string, string> keywordDict,
+    //     bool                       useEscape = false
+    //     )
+    // {
+    //     var        inKeyword = false;
+    //     var        inEscape  = false;
+    //     const char start     = '[';
+    //     const char end       = ']';
+    //     char?      escape    = useEscape ? '\\' : null;
+    //     var        offset    = 0;
+    //
+    //     // allocate chars on stack, length of template + some padding
+    //     Span<char> retVal      = stackalloc char[template.Length + template.Length / 2];
+    //     Span<char> tempKeyword = stackalloc char[50];
+    //
+    //     var i = 0;
+    //     for (; i < template.Length; i++)
+    //     {
+    //         var chr = template[i];
+    //
+    //         if (inEscape)
+    //         {
+    //             retVal[i + offset] = chr;
+    //             inEscape  = false;
+    //             continue;
+    //         }
+    //
+    //         if (inKeyword)
+    //         {
+    //             if (chr != end)
+    //             {
+    //                 tempKeyword[++offset] = chr;
+    //                 continue;
+    //             }
+    //
+    //             if (!keywordDict.TryGetValue(new string(tempKeyword[..offset]), out var val))
+    //             {
+    //                 var len = offset;
+    //                 for (var j = 0; j <= len; j++)
+    //                 {
+    //                     var letter = tempKeyword[j];
+    //                     retVal[i - (offset-- + 1)] = letter;
+    //                 }
+    //             }
+    //             else
+    //             {
+    //                 var len = offset;
+    //                 for (var j = 0; j < len; j++)
+    //                 {
+    //                     var letter = val[j];
+    //                     retVal[i - (offset-- + 1)] = letter;
+    //                 }
+    //             }
+    //
+    //             offset = 0;
+    //             tempKeyword.Clear();
+    //             inKeyword = false;
+    //             continue;
+    //         }
+    //
+    //         if (useEscape && chr == escape)
+    //         {
+    //             inEscape = true;
+    //             // offset--;
+    //             continue;
+    //         }
+    //         
+    //         if (chr == start)
+    //             inKeyword = true;
+    //
+    //         if (chr != start && chr != end || !inKeyword)
+    //             retVal[i + offset] = chr;
+    //     }
+    //
+    //     return new string(retVal[..(i + offset)]);
+    // }
 }
